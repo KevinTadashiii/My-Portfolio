@@ -227,7 +227,7 @@ export class DeskTerminal {
         this.writeLine('');
 
         COMMAND_REFERENCE.forEach(([usage, summary]) => {
-            this.writeLine(`  ${usage.padEnd(16)}${summary}`);
+            this.writeLine(`  ${usage.padEnd(16)} ${summary}`);
         });
 
         this.writeLine('');
@@ -267,9 +267,11 @@ export class DeskTerminal {
         this.writeLine('PROJECTS', 'heading');
         this.writeLine('');
 
+        const maxSlug = Math.max(...projects.map(([slug]) => slug.length), 0);
+
         projects.forEach(([slug, project]) => {
             const status = STATUS_LABELS[project.status] ?? 'Unlisted';
-            this.writeLine(`  ${slug.padEnd(20)}${status}`);
+            this.writeLine(`  ${slug.padEnd(maxSlug + 2)} ${status}`);
         });
 
         this.writeLine('');
