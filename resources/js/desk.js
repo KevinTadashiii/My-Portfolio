@@ -115,8 +115,52 @@ function initProjectPagination() {
     render();
 }
 
+/* Navbar sliding marker */
+function initNavMarker() {
+    const nav = document.querySelector('.site-nav');
+    const marker = document.querySelector('.site-nav__marker');
+    const links = Array.from(nav?.querySelectorAll('a') ?? []);
+    const sections = links
+        .map((link) => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+    if (!nav || !marker || links.length === 0) {
+        return;
+    }
+
+    let activeIndex = 0;
+
+    function setMarker(index) {
+        if (index === activeIndex) {
+            return;
+        }
+        activeIndex = index;
+        const link = links[index];
+        marker.style.transform = `translateX(${link.offsetLeft}px) scaleX(1)`;
+        marker.style.width = `${link.offsetWidth}px`;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const index = sections.indexOf(entry.target);
+                    if (index !== -1) {
+                        setMarker(index);
+                    }
+                }
+            });
+        },
+        { threshold: 0.25, rootMargin: '-50% 0px -50% 0px' }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    setMarker(0);
+}
+
 export function initDesk() {
     initProjectPagination();
+    initNavMarker();
 
     const desk = document.querySelector('[data-desk]');
     const terminalRoot = document.querySelector('[data-terminal]');

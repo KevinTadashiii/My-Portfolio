@@ -22,9 +22,10 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
+        <div class="site-header__rail" aria-hidden="true"></div>
         <div class="site-header__bar">
             <a class="brand" href="#top" aria-label="{{ config('portfolio.profile.name') }} — back to the top of the desk">
-                <span class="brand__mark" aria-hidden="true">kk</span>
+                <span class="brand__mark" aria-hidden="true"></span>
                 <span class="brand__text">
                     <span class="brand__name">{{ config('portfolio.profile.name') }}</span>
                     <span class="brand__sub">{{ config('portfolio.profile.handle') }}</span>
@@ -32,34 +33,21 @@
             </a>
 
             <nav class="site-nav" aria-label="Sections">
-                <a href="#about">Bio</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#journey">Journey</a>
-                <a href="#contact">Contact</a>
-                <button type="button" data-terminal-help>Help</button>
+                <a href="#about"><span class="site-nav__index">01</span><span class="site-nav__label">Bio</span></a>
+                <a href="#projects"><span class="site-nav__index">02</span><span class="site-nav__label">Projects</span></a>
+                <a href="#skills"><span class="site-nav__index">03</span><span class="site-nav__label">Skills</span></a>
+                <a href="#journey"><span class="site-nav__index">04</span><span class="site-nav__label">Journey</span></a>
+                <a href="#contact"><span class="site-nav__index">05</span><span class="site-nav__label">Contact</span></a>
             </nav>
-
-            <button
-                type="button"
-                class="terminal-toggle"
-                data-terminal-toggle
-                aria-expanded="false"
-                aria-controls="terminal-panel"
-            >
-                <span class="terminal-toggle__glyph" aria-hidden="true">&gt;_</span>
-                <span class="terminal-toggle__label">Terminal</span>
-            </button>
+            <span class="site-nav__marker" aria-hidden="true"></span>
         </div>
 
         <nav class="site-nav-mobile" aria-label="Quick links">
-            <a href="#about">Bio</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#journey">Journey</a>
-            <a href="#contact">Contact</a>
-            <button type="button" data-terminal-help>Help</button>
-            <button type="button" data-terminal-toggle aria-expanded="false" aria-controls="terminal-panel">Terminal</button>
+            <a href="#about"><span class="site-nav-mobile__index">01</span> Bio</a>
+            <a href="#projects"><span class="site-nav-mobile__index">02</span> Projects</a>
+            <a href="#skills"><span class="site-nav-mobile__index">03</span> Skills</a>
+            <a href="#journey"><span class="site-nav-mobile__index">04</span> Journey</a>
+            <a href="#contact"><span class="site-nav-mobile__index">05</span> Contact</a>
         </nav>
     </header>
 
@@ -67,9 +55,9 @@
         @yield('content')
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" aria-label="Site footer">
         <span>&copy; {{ date('Y') }} {{ config('portfolio.profile.name') }}</span>
-        <span>Built with Laravel, Tailwind CSS and a very small terminal</span>
+        <span>Built with Laravel And ❤️ from the terminal</span>
         <a href="#top">Back to the desk &uarr;</a>
     </footer>
 

@@ -106,9 +106,21 @@
         position: sticky;
         top: 0;
         z-index: 50;
-        border-bottom: 1px solid rgb(44 24 16 / 0.1);
-        background-color: rgb(245 240 232 / 0.86);
-        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgb(44 24 16 / 0.14);
+        /* Direction 1 material: board background, same recipe as .rack */
+        background: linear-gradient(180deg, #e9dfcb 0%, #dfd2b7 100%);
+        /* No translucency, no blur — flat bar that reads as one object with the desk */
+    }
+
+    /* Direction 1 material: brass rail strip across the top edge */
+    .site-header__rail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(180deg, #c9a869 0%, #8a6a44 100%);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5);
     }
 
     .site-header__bar {
@@ -130,17 +142,26 @@
     }
 
     .brand__mark {
-        display: grid;
-        place-items: center;
-        width: 2.1rem;
-        height: 2.1rem;
-        border: 1px solid rgb(44 24 16 / 0.35);
-        border-radius: 9px;
-        background-color: var(--color-paper);
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.04em;
-        color: var(--color-rust-deep);
+        /* Direction 1 material: 20px brass disc with a screw slot — the screw that
+           holds the rail's left bracket */
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #f0e6d3 0%, #c9a869 55%, #8a6a44 100%);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.55), inset 0 -1px 0 rgb(44 24 16 / 0.18);
+        position: relative;
+    }
+
+    .brand__mark::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 3px;
+        height: 0.38rem;
+        transform: translate(-50%, -50%);
+        background: rgb(44 24 16 / 0.45);
+        border-radius: 1px;
     }
 
     .brand__text {
@@ -151,7 +172,7 @@
 
     .brand__name {
         font-family: var(--font-display);
-        font-size: 0.98rem;
+        font-size: 1.15rem;
         font-weight: 600;
     }
 
@@ -166,82 +187,113 @@
         display: none;
         margin-inline-start: auto;
         align-items: center;
-        gap: 0.2rem;
+        gap: 0;
+        position: relative;
     }
 
-    .site-nav a,
-    .site-nav button {
+    .site-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
         border: none;
-        border-radius: 999px;
+        border-radius: 0;
         background: none;
         padding: 0.35rem 0.7rem;
         font-family: var(--font-sans);
-        font-size: 0.84rem;
+        font-size: 0.82rem;
+        letter-spacing: 0.02em;
         color: var(--color-ink-2);
         text-decoration: none;
         cursor: pointer;
-        transition: background-color 150ms ease, color 150ms ease;
+        transition: color 150ms ease;
     }
 
-    .site-nav a:hover,
-    .site-nav button:hover {
-        background-color: rgb(44 24 16 / 0.06);
+    .site-nav__index {
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.04em;
+        color: var(--color-rust);
+    }
+
+    .site-nav a:hover .site-nav__label {
         color: var(--color-ink);
     }
 
+    /* Direction 5 structure: faint ink rail across the bottom of the nav */
+    .site-nav::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--color-rust);
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    /* Direction 5 structure: sliding rust underline that marks the active section */
+    .site-nav__marker {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background: var(--color-rust);
+        transform: translateX(0) scaleX(0);
+        transform-origin: 0 0;
+        transition: transform 260ms cubic-bezier(0.4, 0.1, 0.2, 1);
+        pointer-events: none;
+    }
+
+    /* Direction 5 mobile: wrapping inline list, no scroll strip, no chips */
     .site-nav-mobile {
         display: flex;
-        gap: 0.4rem;
-        overflow-x: auto;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
         margin-inline: auto;
         width: 100%;
         max-width: 1180px;
         padding: 0 1rem 0.7rem;
-        scrollbar-width: none;
-    }
-
-    .site-nav-mobile::-webkit-scrollbar {
-        display: none;
     }
 
     .site-nav-mobile a,
     .site-nav-mobile button {
-        flex: 0 0 auto;
-        border: 1px solid rgb(44 24 16 / 0.16);
-        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        border: 1px solid rgb(44 24 16 / 0.14);
+        border-radius: 3px;
         background-color: var(--color-paper);
-        padding: 0.3rem 0.7rem;
+        padding: 0.3rem 0.65rem;
         font-size: 0.78rem;
         color: var(--color-ink-2);
         text-decoration: none;
         white-space: nowrap;
-    }
-
-    .terminal-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        margin-inline-start: auto;
-        border: 1px solid var(--color-ink);
-        border-radius: 10px;
-        background-color: var(--color-term);
-        padding: 0.4rem 0.75rem;
-        font-family: var(--font-mono);
-        font-size: 0.74rem;
-        letter-spacing: 0.02em;
-        color: var(--color-term-text);
         cursor: pointer;
-        transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+        transition: border-color 150ms ease, color 150ms ease;
     }
 
-    .terminal-toggle:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 10px 18px -12px rgb(0 0 0 / 0.8);
+    .site-nav-mobile a:hover,
+    .site-nav-mobile button:hover {
+        border-color: var(--color-rust-deep);
+        color: var(--color-ink);
     }
 
-    .terminal-toggle__glyph {
-        color: var(--color-term-prompt);
+    .site-nav-mobile__index {
+        font-family: var(--font-mono);
+        font-size: 0.58rem;
+        letter-spacing: 0.04em;
+        color: var(--color-rust);
     }
+
+    /* Hide small indices below 420px so the row stays to one line */
+    @media (max-width: 419px) {
+        .site-nav-mobile__index {
+            display: none;
+        }
+    }
+
 
     @media (min-width: 768px) {
         .site-header__bar {
@@ -254,10 +306,6 @@
 
         .site-nav-mobile {
             display: none;
-        }
-
-        .terminal-toggle {
-            margin-inline-start: 0;
         }
     }
 
@@ -283,6 +331,26 @@
 
     .site-footer a:hover {
         color: var(--color-rust-deep);
+    }
+
+    /* Mobile: stack the footer items and center them so nothing gets
+       squeezed or orphaned on narrow screens (phones / tablets portrait).
+       Desktop keeps the space-between row above 768px. */
+    @media (max-width: 767px) {
+        .site-footer {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 0.5rem;
+            padding: 1.2rem 1rem 2rem;
+        }
+
+        .site-footer span,
+        .site-footer a {
+            display: block;
+            width: 100%;
+        }
     }
 
     /* ======================================================================
@@ -388,7 +456,6 @@
         grid-template-columns: 1fr;
         grid-template-areas:
             "laptop"
-            "panel"
             "notebook"
             "notes";
         gap: 1rem;
@@ -472,6 +539,16 @@
 
     .desk[data-terminal-state="expanded"] .desk__cell--notes {
         display: none;
+    }
+
+    /* Mobile: the panel only claims a grid row while it is expanded. Keeping it
+       out of the collapsed grid stops its empty track from adding a second row
+       gap between the laptop and the notebook. */
+    .desk[data-terminal-state="expanded"] {
+        grid-template-areas:
+            "laptop"
+            "panel"
+            "notebook";
     }
 
     /* Tablet: the laptop keeps the full width, the objects sit in pairs */
@@ -716,6 +793,9 @@
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
+        /* Top the laptop's flex gap up to the desk's 1rem row gap so the button
+           sits the same distance from the keyboard as it does from the notebook. */
+        margin-top: 0.55rem;
         border: 1px solid rgb(44 24 16 / 0.25);
         border-radius: 999px;
         background-color: var(--color-paper);
@@ -2256,14 +2336,6 @@
         transform: none;
     }
 
-    .desk-object {
-        transition: transform 200ms ease, box-shadow 200ms ease;
-    }
-
-    .desk-object:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lift);
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
