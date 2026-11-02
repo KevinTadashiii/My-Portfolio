@@ -7,7 +7,11 @@
     <meta name="theme-color" content="#F5F0E8">
     <meta name="description" content="{{ config('portfolio.profile.name') }} — {{ config('portfolio.profile.role') }} in {{ config('portfolio.profile.location') }}. A student desk wired to a terminal.">
 
-    <title>{{ config('portfolio.profile.name') }} — Terminal Desk</title>
+    <title>{{ config('portfolio.profile.last_name') }} — {{ config('portfolio.brand.name') }}</title>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="16x16">
+    <link rel="icon" href="/favicon-32.svg" type="image/svg+xml" sizes="32x32">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=lora:400,500,600,700|inter:400,500,600|jetbrains-mono:400,500,700|caveat:400,600&display=swap" rel="stylesheet">

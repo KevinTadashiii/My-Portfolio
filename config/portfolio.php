@@ -15,13 +15,18 @@ return [
 
     'profile' => [
         'name' => 'Muhammad Akbar Kevin Kanigara',
+        'last_name' => 'Kevin Kanigara',
         'role' => 'Software Engineering Student (SMKN 2 Bandung — RPL)',
         'location' => 'Bandung, Indonesia',
         'city' => 'Bandung',
         'handle' => 'kevin@desk',
-        'tagline' => 'Always learning, always building.',
+        'tagline' => 'Always learning by building.',
         'github' => 'https://github.com/KevinTadashiii',
         'email' => 'kevintadashiii@gmail.com',
+    ],
+
+    'brand' => [
+        'name' => 'Portfolio',
     ],
 
     'about' => [

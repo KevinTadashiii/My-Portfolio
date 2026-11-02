@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-labelledby="stamp-title">
+  <title id="stamp-title">Kevin Kanigara — kk paper tile</title>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="9" fill="#FFFDF8" stroke="#2C1810" stroke-opacity="0.35"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#A3462A" stroke-width="2.5">
+      <path d="M8.4 9.4V21.4"/>
+      <path d="M8.4 16.2 12.4 11.8"/>
+      <path d="M8.4 16.2 12.4 21.4"/>
+      <path d="M16.2 9.4V21.4"/>
+      <path d="M16.2 16.2 20.2 11.8"/>
+      <path d="M16.2 16.2 20.2 21.4"/>
+    </g>
+    <path d="M20.2 21.4H24.2" stroke="#D4A843" stroke-width="2.5"/>
+  </g>
+</svg>
