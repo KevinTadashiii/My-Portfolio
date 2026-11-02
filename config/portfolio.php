@@ -216,7 +216,7 @@ return [
 
     'terminal' => [
         'prompt' => 'kevin@desk:~$',
-        'suggestions' => ['help', 'whoami', 'about', 'projects', 'skills', 'journey', 'contact'],
+        'suggestions' => ['help', 'whoami', 'about', 'projects', 'skills', 'journey', 'contact', 'clear', 'sudo'],
         'boot' => [
             ['[ 0.00 ] booting kevin@desk ...', 'muted'],
             ['[ 0.31 ] mounting /home/kevin/projects ..... ok', 'muted'],

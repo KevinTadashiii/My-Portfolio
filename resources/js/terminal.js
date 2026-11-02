@@ -334,8 +334,8 @@ export class DeskTerminal {
         this.writeLine('');
 
         (contact.links ?? []).forEach((link) => {
-            this.writeLine(`  ${link.label.padEnd(8)}${link.value}`);
-            this.writeLine(`  ${' '.repeat(8)}${link.url}`, 'muted');
+            this.writeLine(`  ${link.label.padEnd(10)} ${link.value}`);
+            this.writeLine(`  ${' '.repeat(11)}${link.url}`, 'muted');
         });
 
         if (contact.location) {
