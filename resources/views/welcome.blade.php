@@ -67,7 +67,7 @@
     {{-- About                                                              --}}
     {{-- ---------------------------------------------------------------- --}}
     <div class="sections">
-        <section class="section reveal" id="about" aria-labelledby="about-heading">
+        <section class="section" id="about" aria-labelledby="about-heading">
             <div class="section__head">
                 <p class="eyebrow">01 &mdash; about</p>
                 <h2 class="section__title" id="about-heading">Who is typing this?</h2>
@@ -85,7 +85,7 @@
         {{-- ---------------------------------------------------------------- --}}
         {{-- Projects                                                           --}}
         {{-- ---------------------------------------------------------------- --}}
-        <section class="section reveal" id="projects" aria-labelledby="projects-heading">
+        <section class="section" id="projects" aria-labelledby="projects-heading">
             <div class="section__head">
                 <p class="eyebrow">02 &mdash; projects</p>
                 <h2 class="section__title" id="projects-heading">The project folder</h2>
@@ -131,7 +131,7 @@
         {{-- ---------------------------------------------------------------- --}}
         {{-- Skills                                                             --}}
         {{-- ---------------------------------------------------------------- --}}
-        <section class="section reveal" id="skills" aria-labelledby="skills-heading">
+        <section class="section" id="skills" aria-labelledby="skills-heading">
             <div class="section__head">
                 <p class="eyebrow">03 &mdash; skills</p>
                 <h2 class="section__title" id="skills-heading">The tool rack</h2>
@@ -161,7 +161,7 @@
         {{-- ---------------------------------------------------------------- --}}
         {{-- Journey                                                            --}}
         {{-- ---------------------------------------------------------------- --}}
-        <section class="section reveal" id="journey" aria-labelledby="journey-heading">
+        <section class="section" id="journey" aria-labelledby="journey-heading">
             <div class="section__head">
                 <p class="eyebrow">04 &mdash; journey</p>
                 <h2 class="section__title" id="journey-heading">How I got here</h2>
@@ -183,7 +183,7 @@
         {{-- ---------------------------------------------------------------- --}}
         {{-- Contact                                                            --}}
         {{-- ---------------------------------------------------------------- --}}
-        <section class="section reveal" id="contact" aria-labelledby="contact-heading">
+        <section class="section" id="contact" aria-labelledby="contact-heading">
             <div class="section__head">
                 <p class="eyebrow">05 &mdash; contact</p>
                 <h2 class="section__title" id="contact-heading">Send a postcard</h2>

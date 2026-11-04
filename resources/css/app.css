@@ -2333,12 +2333,18 @@
        ====================================================================== */
 
     .reveal {
-        opacity: 0;
-        transform: translateY(14px);
+        opacity: 1;
+        transform: none;
         transition: opacity 620ms ease, transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .reveal.is-visible {
+    /* Only animate when JS has initialized and added .animate-in */
+    .reveal.animate-in {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    .reveal.animate-in.is-visible {
         opacity: 1;
         transform: none;
     }

@@ -274,10 +274,15 @@ export function initDesk() {
     });
 
     /* --------------------------------------------------------------------
-     | Reveal on scroll
+     | Reveal on scroll — progressive enhancement
+     | Content is visible by default; animation only runs if JS initializes
+     | and user hasn't requested reduced motion.
      | ------------------------------------------------------------------ */
 
     const revealTargets = Array.from(document.querySelectorAll('.reveal'));
+
+    // Mark elements as animation candidates (sets initial hidden state via CSS)
+    revealTargets.forEach((target) => target.classList.add('animate-in'));
 
     if ('IntersectionObserver' in window && !prefersReducedMotion()) {
         const observer = new IntersectionObserver(
@@ -294,6 +299,7 @@ export function initDesk() {
 
         revealTargets.forEach((target) => observer.observe(target));
     } else {
+        // No IntersectionObserver or reduced motion: reveal immediately
         revealTargets.forEach((target) => target.classList.add('is-visible'));
     }
 
