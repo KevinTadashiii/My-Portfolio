@@ -48,12 +48,12 @@ return [
     | a warning label. See the README for the steps to add one.
     */
     'projects' => [
-        'my-portofolio' => [
+        'my-portfolio' => [
             'title' => 'This Portfolio',
             'summary' => 'The site you are reading: a Laravel app with a Blade front end, a hand-built desk, and a terminal that answers.',
             'stack' => ['Laravel', 'PHP', 'Blade', 'Tailwind CSS', 'Alpine.js', 'Vite'],
             'status' => 'live',
-            'url' => 'https://github.com/KevinTadashiii/My-Portofolio',
+            'url' => 'https://github.com/KevinTadashiii/My-Portfolio',
         ],
         'valorant-esport' => [
             'title' => 'Valorant Esport',
@@ -111,12 +111,12 @@ return [
             'status' => 'complete',
             'url' => 'https://github.com/KevinTadashiii/mono-calculator',
         ],
-        'my-simple-portofolio-website' => [
+        'my-simple-portfolio-website' => [
             'title' => 'First Portfolio Site',
             'summary' => 'The first portfolio I shipped: hand-written HTML and CSS with Tailwind, deployed on GitHub Pages.',
             'stack' => ['HTML', 'CSS', 'Tailwind CSS', 'GitHub Pages'],
             'status' => 'live',
-            'url' => 'https://github.com/KevinTadashiii/my-simple-portofolio-website',
+            'url' => 'https://github.com/KevinTadashiii/my-simple-portfolio-website',
         ],
     ],
 

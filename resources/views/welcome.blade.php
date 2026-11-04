@@ -1,4 +1,4 @@
-@extends('layouts.portofolio')
+@extends('layouts.portfolio')
 
 @section('content')
     @php
