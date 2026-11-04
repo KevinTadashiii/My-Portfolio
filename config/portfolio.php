@@ -66,7 +66,7 @@ return [
             'title' => 'RPL Lab Inventory',
             'summary' => 'A Laravel dashboard for the school\'s RPL lab: categories, item records, and the equipment count at a glance.',
             'stack' => ['Laravel', 'PHP', 'Blade', 'Tailwind CSS', 'SQLite', 'Vite'],
-            'status' => 'in_progress',
+            'status' => 'complete',
             'url' => 'https://github.com/KevinTadashiii/Manajemen-Inventaris-Lab-RPL',
         ],
         'simple-neural-network' => [
