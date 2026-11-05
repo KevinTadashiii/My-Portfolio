@@ -31,9 +31,9 @@ return [
 
     'about' => [
         'paragraphs' => [
-            'It started in 6th grade — I wanted to make a game that would get everyone\'s attention. Turned out, the skill I needed most wasn\'t art or design, but programming. That was the entry point.',
-            'I didn\'t stick with game development (the art side was a wall I couldn\'t climb), but I fell in love with the code itself. From 7th to 8th grade, I went deep into low-level programming — C, C++, understanding how memory and machines actually work.',
-            'By 9th grade, the scope widened. Full-stack development became the playground: JavaScript, TypeScript, Linux, Docker, and now AI. Today I\'m a Software Engineering student at SMKN 2 Bandung (RPL), still chasing the same feeling — building things that work, understanding them all the way down.',
+            'It started in 6th grade, I wanted to make a game that would get everyone\'s attention. Turned out, the skill I needed most wasn\'t art or design, but programming. That was the entry point.',
+            'I didn\'t stick with game development (the art side was a wall I couldn\'t climb), but I fell in love with the code itself. From 7th to 8th grade, I went deep into low-level programming: C, C++, understanding how memory and machines actually work.',
+            'By 9th grade, the scope widened. Full-stack development became the playground: JavaScript, TypeScript, Linux, Docker, and now AI. Today I\'m a Software Engineering student at SMKN 2 Bandung (RPL), still chasing the same feeling, building things that work, understanding them all the way down.',
         ],
         'links' => [
             ['label' => 'GitHub', 'value' => '@KevinTadashiii', 'url' => 'https://github.com/KevinTadashiii'],
