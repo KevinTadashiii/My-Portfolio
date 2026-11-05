@@ -260,7 +260,7 @@ export class DeskTerminal {
 
         if (projects.length === 0) {
             this.writeLine('The project folder is empty. The desk is not.');
-            this.writeLine('Ask me directly — there is always something half-finished on the desk.', 'muted');
+            this.writeLine('Ask me directly, there is always something half-finished on the desk.', 'muted');
             return;
         }
 
