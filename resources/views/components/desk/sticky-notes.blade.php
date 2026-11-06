@@ -1,8 +1,8 @@
 <div class="notes">
-    <button type="button" class="note note--mustard" data-terminal-help>
-        <span class="note__cmd">help</span>
-        <span class="note__caption">list every command I know</span>
-    </button>
+    <div class="note note--blue">
+        <span class="note__cmd">IDK</span>
+        <span class="note__caption">git commit -m "fixed it"</span>
+    </div>
 
     <div class="note note--rust">
         <span class="note__cmd">todo</span>

@@ -930,82 +930,399 @@
        ====================================================================== */
 
     .coffee {
+        --coffee-plastic: #dce4df;
+        --coffee-liquid: #5a3421;
+        --coffee-milk: #c9a27a;
+        --coffee-ice: #eaf4f0;
+        --coffee-band: #c75b39;
+        --coffee-brass: #c9a869;
+        --coffee-brass-light: #d2b373;
+        --coffee-brass-dark: #a97e4a;
+        --coffee-receipt: #fffdf8;
+        --coffee-receipt-ink: #2c1810;
+        --coffee-ink: #2c1810;
+        --coffee-highlight: #fff;
+        --coffee-straw-edge: #d6cbbb;
+        --coffee-straw-mouth: #b7a48c;
+        --coffee-seam: #9fb0aa;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.45rem;
     }
 
-    .coffee__cup {
+    .coffee__object {
         position: relative;
-        border: none;
+        width: 160px;
+        max-width: 100%;
+        height: 170px;
+    }
+
+    /* Brass coaster on the same center axis as the bag and receipt. It is a
+       rim, not a disc: the bag and receipt cover the middle, so the read comes
+       from the machined edge and the soft brass tint showing through the
+       plastic. The rim stays wider than the receipt so brass shows evenly on
+       both sides of the base. */
+    .coffee__object::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        top: 58px;
+        left: 50%;
+        width: 112px;
+        height: 112px;
+        border-radius: 50%;
+        transform: translateX(-50%);
+        background:
+            radial-gradient(circle at 38% 32%, rgb(255 255 255 / 0.26), transparent 45%),
+            radial-gradient(
+                circle 56px at 50% 50%,
+                rgb(201 168 105 / 0.16) 0 49px,
+                transparent 50px
+            ),
+            radial-gradient(
+                circle 56px at 50% 50%,
+                transparent 0 50px,
+                var(--coffee-brass-dark) 50.5px 51.5px,
+                var(--coffee-brass) 52px 54.5px,
+                var(--coffee-brass-light) 55px 56px,
+                transparent 56.5px
+            );
+        filter: drop-shadow(0 4px 6px rgb(44 24 16 / 0.2));
+    }
+
+    .coffee__receipt {
+        position: absolute;
+        z-index: 1;
+        /* Sits a little lower than the bag so the shop name stays readable
+           through the squeeze animation's upward nudge. */
+        bottom: -4px;
+        left: 50%;
+        width: 92px;
+        margin: 0;
+        padding: 14px 7px 3px;
+        transform: translateX(-50%) rotate(-3deg);
+        transform-origin: 50% 100%;
+        background: var(--coffee-receipt);
+        box-shadow: 0 3px 7px rgb(44 24 16 / 0.13);
+        color: var(--coffee-receipt-ink);
+        font-family: var(--font-mono);
+        font-size: 0.55rem;
+        line-height: 1.2;
+        letter-spacing: 0.04em;
+        text-align: left;
+        transition: transform 220ms cubic-bezier(0.4, 0.1, 0.2, 1);
+    }
+
+    .coffee__receipt span {
+        display: block;
+    }
+
+    .coffee__receipt-shop {
+        margin-bottom: 1px;
+    }
+
+    .coffee__receipt-total {
+        font-weight: 500;
+    }
+
+    .coffee__bag {
+        position: relative;
+        z-index: 2;
+        display: block;
+        border: 0;
         background: none;
         padding: 0;
         cursor: pointer;
         line-height: 0;
+        transition: transform 180ms ease;
     }
 
-    .coffee__cup svg {
-        width: 96px;
-        max-width: 100%;
-        filter: drop-shadow(0 14px 18px rgb(44 24 16 / 0.35));
+    .coffee__bag:hover,
+    .coffee__bag:focus-visible {
+        transform: translateY(-2px);
+    }
+
+    .coffee__bag:focus-visible {
+        outline: 2px solid var(--color-rust-deep);
+        outline-offset: 4px;
+        border-radius: 28px;
+    }
+
+    .coffee__svg {
+        display: block;
+        width: 160px;
+        height: 122px;
+        overflow: visible;
+        filter: drop-shadow(0 6px 8px rgb(44 24 16 / 0.18));
+    }
+
+    /* ---- Bag material ------------------------------------------------- */
+
+    .coffee__plastic-body {
+        fill: var(--coffee-plastic);
+        fill-opacity: 0.32;
+    }
+
+    .coffee__plastic-edge {
+        fill: none;
+        stroke: var(--coffee-plastic);
+        stroke-width: 2;
+        stroke-opacity: 0.55;
+        stroke-linejoin: round;
+    }
+
+    .coffee__milk {
+        fill: var(--coffee-milk);
+    }
+
+    .coffee__liquid {
+        fill: var(--coffee-liquid);
+    }
+
+    .coffee__coffee-swirl {
+        fill: none;
+        stroke: var(--coffee-liquid);
+        stroke-width: 4;
+        stroke-linecap: round;
+        opacity: 0.22;
+    }
+
+    .coffee__milk-sheen {
+        fill: none;
+        stroke: var(--coffee-highlight);
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        opacity: 0.16;
+    }
+
+    .coffee__milk-streak {
+        fill: none;
+        stroke: var(--coffee-milk);
+        stroke-width: 4;
+        stroke-linecap: round;
+        opacity: 0.35;
+    }
+
+    .coffee__surface {
+        fill: none;
+        stroke: var(--coffee-highlight);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        opacity: 0.3;
+    }
+
+    .coffee__liquid-shade {
+        fill: var(--coffee-ink);
+        opacity: 0.18;
+    }
+
+    .coffee__ice {
         transition: transform 220ms ease;
     }
 
-    .coffee__cup:hover svg {
-        transform: translateY(-3px) rotate(-2deg);
+    .coffee.is-squeezed .coffee__ice {
+        transform: translate(2px, 1px);
     }
 
-    .coffee__steam {
-        animation: steam 3.6s ease-in-out infinite;
-        transform-origin: center bottom;
+    .coffee__ice-cube {
+        fill: var(--coffee-ice);
+        fill-opacity: 0.7;
+        stroke: var(--coffee-highlight);
+        stroke-width: 1;
+        stroke-opacity: 0.6;
     }
 
-    .coffee__steam:nth-child(2) {
-        animation-delay: 1.1s;
+    .coffee__ice-highlight {
+        fill: none;
+        stroke: var(--coffee-highlight);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-opacity: 0.8;
     }
 
-    .coffee__steam:nth-child(3) {
-        animation-delay: 2.2s;
+    .coffee__plastic-gloss {
+        fill: none;
+        stroke: var(--coffee-highlight);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-opacity: 0.55;
     }
 
-    @keyframes steam {
-        0% {
-            opacity: 0;
-            transform: translateY(4px) scaleY(0.85);
-        }
-        35% {
-            opacity: 0.75;
-        }
+    .coffee__plastic-gloss--soft {
+        stroke-width: 2;
+        stroke-opacity: 0.28;
+    }
+
+    .coffee__fold {
+        fill: none;
+        stroke: var(--coffee-highlight);
+        stroke-width: 1.4;
+        stroke-linecap: round;
+        stroke-opacity: 0.55;
+    }
+
+    .coffee__fold--soft {
+        stroke-opacity: 0.3;
+    }
+
+    .coffee__gather {
+        fill: none;
+        stroke: var(--coffee-ink);
+        stroke-width: 2;
+        stroke-linecap: round;
+        opacity: 0.08;
+    }
+
+    .coffee__seam {
+        fill: none;
+        stroke: var(--coffee-seam);
+        stroke-width: 1.2;
+        stroke-linecap: round;
+        stroke-opacity: 0.34;
+    }
+
+    .coffee__seam--soft {
+        stroke-opacity: 0.18;
+    }
+
+    /* ---- Straw, knot, band -------------------------------------------- */
+
+    .coffee__straw {
+        transform: rotate(12deg);
+        transform-box: fill-box;
+        transform-origin: 50% 100%;
+        transition: transform 180ms ease;
+    }
+
+    .coffee__bag:hover .coffee__straw,
+    .coffee__bag:focus-visible .coffee__straw {
+        transform: rotate(15deg);
+    }
+
+    .coffee__straw-body {
+        fill: var(--coffee-receipt);
+        stroke: var(--coffee-straw-edge);
+        stroke-width: 0.75;
+    }
+
+    .coffee__straw-stripe {
+        stroke: var(--coffee-band);
+        stroke-width: 1;
+        opacity: 0.55;
+    }
+
+    .coffee__straw-mouth {
+        fill: var(--coffee-straw-mouth);
+    }
+
+    .coffee__neck {
+        fill: var(--coffee-plastic);
+        fill-opacity: 0.52;
+        stroke: var(--coffee-plastic);
+        stroke-width: 1.5;
+        stroke-opacity: 0.7;
+    }
+
+    .coffee__flap {
+        fill: var(--coffee-plastic);
+        fill-opacity: 0.38;
+        stroke: var(--coffee-plastic);
+        stroke-width: 1.2;
+        stroke-opacity: 0.55;
+    }
+
+    .coffee__flap-fold {
+        fill: none;
+        stroke: var(--coffee-highlight);
+        stroke-width: 1;
+        stroke-linecap: round;
+        stroke-opacity: 0.45;
+    }
+
+    .coffee__knot-highlight {
+        fill: none;
+        stroke: var(--coffee-highlight);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-opacity: 0.6;
+    }
+
+    .coffee__knot-fold {
+        fill: none;
+        stroke: var(--coffee-highlight);
+        stroke-width: 1;
+        stroke-linecap: round;
+        stroke-opacity: 0.35;
+    }
+
+    .coffee__band {
+        fill: none;
+        stroke: var(--coffee-band);
+        stroke-width: 2.6;
+        stroke-linecap: round;
+    }
+
+    .coffee__band--second {
+        stroke-width: 2.2;
+        opacity: 0.92;
+    }
+
+    .coffee__band-knot {
+        fill: var(--coffee-band);
+    }
+
+    .coffee__band-tail {
+        fill: none;
+        stroke: var(--coffee-band);
+        stroke-width: 2;
+        stroke-linecap: round;
+    }
+
+    /* ---- Condensation ------------------------------------------------- */
+
+    .coffee__bead-static {
+        fill: var(--coffee-ice);
+        opacity: 0.75;
+    }
+
+    .coffee__sweat {
+        fill: none;
+        stroke: var(--coffee-ice);
+        stroke-width: 1;
+        stroke-linecap: round;
+        opacity: 0.3;
+    }
+
+    .coffee__bead {
+        fill: var(--coffee-ice);
+        opacity: 0.9;
+        transition: transform 180ms ease;
+    }
+
+    .coffee__bag:hover .coffee__bead,
+    .coffee__bag:focus-visible .coffee__bead {
+        transform: translate(6px, -1px);
+    }
+
+    /* ---- Click state and caption -------------------------------------- */
+
+    .coffee.is-squeezed .coffee__svg {
+        animation: coffee-squeeze 220ms ease;
+    }
+
+    .coffee.is-squeezed .coffee__receipt {
+        transform: translate(-50%, -3px) rotate(-4deg);
+    }
+
+    @keyframes coffee-squeeze {
+        0%,
         100% {
-            opacity: 0;
-            transform: translateY(-12px) scaleY(1.15);
+            transform: scale(1);
         }
-    }
-
-    .coffee__meter {
-        display: flex;
-        align-items: center;
-        gap: 0.45rem;
-        font-family: var(--font-mono);
-        font-size: 0.62rem;
-        letter-spacing: 0.04em;
-        color: var(--color-ink-2);
-    }
-
-    .coffee__meter-track {
-        width: 74px;
-        height: 7px;
-        overflow: hidden;
-        border: 1px solid rgb(44 24 16 / 0.25);
-        border-radius: 999px;
-        background: rgb(44 24 16 / 0.08);
-    }
-
-    .coffee__meter-fill {
-        height: 100%;
-        border-radius: inherit;
-        background: linear-gradient(90deg, var(--color-moss), var(--color-mustard));
+        45% {
+            transform: scale(0.97);
+        }
     }
 
     .coffee__joke {
@@ -1017,11 +1334,47 @@
         transition: opacity 180ms ease, transform 180ms ease;
     }
 
-    .coffee:hover .coffee__joke,
-    .coffee:focus-within .coffee__joke,
     .coffee__joke.is-visible {
         opacity: 1;
         transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .coffee__bag,
+        .coffee__straw,
+        .coffee__bead,
+        .coffee__ice,
+        .coffee__receipt,
+        .coffee__joke {
+            transition: none;
+        }
+
+        .coffee__bag:hover,
+        .coffee__bag:focus-visible {
+            transform: none;
+        }
+
+        .coffee__bag:hover .coffee__straw,
+        .coffee__bag:focus-visible .coffee__straw {
+            transform: rotate(12deg);
+        }
+
+        .coffee__bag:hover .coffee__bead,
+        .coffee__bag:focus-visible .coffee__bead {
+            transform: none;
+        }
+
+        .coffee.is-squeezed .coffee__svg {
+            animation: none;
+        }
+
+        .coffee.is-squeezed .coffee__ice {
+            transform: none;
+        }
+
+        .coffee.is-squeezed .coffee__receipt {
+            transform: translateX(-50%) rotate(-3deg);
+        }
     }
 
     /* ======================================================================
@@ -1384,11 +1737,6 @@
         background: rgb(255 255 255 / 0.45);
     }
 
-    .note--mustard {
-        background: linear-gradient(160deg, #f4dd94, #e6c76b);
-        transform: rotate(-1.6deg);
-    }
-
     .note--rust {
         background: linear-gradient(160deg, #efb197, #e09a7c);
         transform: rotate(1.4deg);
@@ -1399,8 +1747,13 @@
         transform: rotate(-0.8deg);
     }
 
-    button.note:hover,
-    button.note:focus-visible {
+    .note--blue {
+        background: linear-gradient(160deg, #b8d4e8, #9bbdd6);
+        transform: rotate(1.1deg);
+    }
+
+    .note:hover,
+    .note:focus-visible {
         transform: rotate(0deg) translateY(-3px);
         box-shadow: 0 18px 26px -16px rgb(44 24 16 / 0.8);
     }

@@ -215,12 +215,6 @@ export function initDesk() {
         button.addEventListener('click', () => setExpanded(!expanded));
     });
 
-    document.querySelectorAll('[data-terminal-help]').forEach((button) => {
-        button.addEventListener('click', () => {
-            terminal.submit('help');
-        });
-    });
-
     /* --------------------------------------------------------------------
      | Project dialog — one card, shared by the section and the terminal
      | ------------------------------------------------------------------ */
