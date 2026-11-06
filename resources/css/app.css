@@ -322,47 +322,86 @@
         }
     }
 
+    /* Footer: meta left / nav right on the top row, note centered below.
+       Mirrors the header bar (same 1180px rail, same hairline rule). */
     .site-footer {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.75rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "meta"
+            "nav"
+            "note";
+        justify-items: center;
+        text-align: center;
+        gap: 0.65rem 1.5rem;
         margin-inline: auto;
         width: 100%;
         max-width: 1180px;
-        padding: 1.6rem 1rem 2.4rem;
+        padding: 1.5rem 1rem 2.2rem;
+        border-top: 1px solid rgb(44 24 16 / 0.14);
         font-family: var(--font-mono);
         font-size: 0.7rem;
+        line-height: 1.5;
         color: var(--color-ink-2);
+    }
+
+    .site-footer__meta {
+        grid-area: meta;
+        margin: 0;
+    }
+
+    .site-footer__note {
+        grid-area: note;
+        margin: 0;
+    }
+
+    .site-footer__nav {
+        grid-area: nav;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem 1.15rem;
     }
 
     .site-footer a {
         color: var(--color-ink);
         text-decoration: none;
+        padding-block: 0.2rem;
     }
 
     .site-footer a:hover {
         color: var(--color-rust-deep);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
     }
 
-    /* Mobile: stack the footer items and center them so nothing gets
-       squeezed or orphaned on narrow screens (phones / tablets portrait).
-       Desktop keeps the space-between row above 768px. */
-    @media (max-width: 767px) {
+    @media (min-width: 768px) {
         .site-footer {
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            gap: 0.5rem;
-            padding: 1.2rem 1rem 2rem;
+            grid-template-columns: minmax(0, 1fr) auto;
+            grid-template-areas:
+                "meta nav"
+                "note note";
+            justify-items: stretch;
+            text-align: left;
+            padding-inline: 1.5rem;
         }
 
-        .site-footer span,
-        .site-footer a {
-            display: block;
-            width: 100%;
+        .site-footer__meta {
+            justify-self: start;
+            align-self: center;
+        }
+
+        .site-footer__nav {
+            justify-self: end;
+            justify-content: flex-end;
+            align-self: center;
+        }
+
+        .site-footer__note {
+            justify-self: center;
+            text-align: center;
         }
     }
 

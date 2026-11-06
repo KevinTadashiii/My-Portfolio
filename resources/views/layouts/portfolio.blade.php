@@ -153,16 +153,16 @@
     </main>
 
     <footer class="site-footer" aria-label="Site footer">
-        <span>&copy; {{ date('Y') }} {{ config('portfolio.profile.name') }} — {{ config('portfolio.profile.location') }}</span>
-        <span>Built with Laravel And ❤️ from the terminal</span>
-        <nav aria-label="Footer">
-            <a href="#about">Bio</a> ·
-            <a href="#projects">Projects</a> ·
-            <a href="#skills">Skills</a> ·
-            <a href="{{ config('portfolio.profile.github') }}" rel="me noopener noreferrer" target="_blank">GitHub</a> ·
-            <a href="{{ route('sitemap') }}">Sitemap</a> ·
+        <p class="site-footer__meta">&copy; {{ date('Y') }} {{ config('portfolio.profile.name') }} — {{ config('portfolio.profile.location') }}</p>
+        <nav class="site-footer__nav" aria-label="Footer">
+            <a href="#about">Bio</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="{{ config('portfolio.profile.github') }}" rel="me noopener noreferrer" target="_blank">GitHub</a>
+            <a href="{{ route('sitemap') }}">Sitemap</a>
             <a href="#top">Back to the desk &uarr;</a>
         </nav>
+        <p class="site-footer__note">Built with Laravel and ❤️ from the terminal</p>
     </footer>
 
     @stack('scripts')
