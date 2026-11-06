@@ -1,12 +1,5 @@
 <div class="coffee" x-data="{ joke: false }" :class="joke && 'is-squeezed'">
     <div class="coffee__object">
-        <p class="coffee__receipt">
-            <span class="coffee__receipt-shop">es kopi susu</span>
-            <span>sugar 73%</span>
-            <span>ice 3</span>
-            <span class="coffee__receipt-total">Rp 18.000</span>
-        </p>
-
         <button
             type="button"
             class="coffee__bag"
@@ -49,16 +42,16 @@
 
                             <g class="coffee__ice">
                                 <g transform="rotate(-12 54 77)">
-                                    <rect class="coffee__ice-cube" x="43" y="66" width="22" height="22" rx="4"/>
-                                    <path class="coffee__ice-highlight" d="M47 70C50 73 52 76 53 80"/>
+                                    <rect class="coffee__ice-cube" x="44.67" y="70" width="18.67" height="14" rx="3"/>
+                                    <path class="coffee__ice-highlight" d="M48.7 74C50.7 76 51.7 78 52.7 81"/>
                                 </g>
                                 <g transform="rotate(9 88 73)">
-                                    <rect class="coffee__ice-cube" x="76" y="61" width="24" height="24" rx="5"/>
-                                    <path class="coffee__ice-highlight" d="M81 66C84 69 86 72 87 77"/>
+                                    <rect class="coffee__ice-cube" x="77.33" y="65" width="21.33" height="16" rx="3"/>
+                                    <path class="coffee__ice-highlight" d="M81.3 69C83.3 71 84.3 73 85.3 76"/>
                                 </g>
-                                <g transform="rotate(-17 108 87)">
-                                    <rect class="coffee__ice-cube" x="99" y="78" width="18" height="18" rx="3"/>
-                                    <path class="coffee__ice-highlight" d="M103 82C105 84 107 87 108 90"/>
+                                <g transform="rotate(-17 111 87)">
+                                    <rect class="coffee__ice-cube" x="103" y="81" width="16" height="12" rx="2"/>
+                                    <path class="coffee__ice-highlight" d="M107 85C109 87 110 89 111 92"/>
                                 </g>
                             </g>
                         </g>
@@ -124,6 +117,15 @@
                     </g>
                 </g>
             </svg>
+
+            <span class="coffee__receipt" aria-hidden="true">
+                <span class="coffee__receipt-shop">es kopi susu</span>
+                <span>sugar 73%</span>
+                <span>ice 3</span>
+                <span class="coffee__receipt-total">Rp 18.000</span>
+            </span>
+
+            <span class="coffee__tape" aria-hidden="true"></span>
         </button>
     </div>
 

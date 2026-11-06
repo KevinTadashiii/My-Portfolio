@@ -1021,15 +1021,15 @@
     .coffee__receipt {
         position: absolute;
         z-index: 1;
-        /* Sits a little lower than the bag so the shop name stays readable
-           through the squeeze animation's upward nudge. */
+        /* Tucks under the bag's base with a few pixels of overlap, so the
+           tape below can bridge the seam, and hangs 4px past the object. */
         bottom: -4px;
         left: 50%;
+        display: block;
         width: 92px;
         margin: 0;
         padding: 14px 7px 3px;
-        transform: translateX(-50%) rotate(-3deg);
-        transform-origin: 50% 100%;
+        transform: translateX(-50%);
         background: var(--coffee-receipt);
         box-shadow: 0 3px 7px rgb(44 24 16 / 0.13);
         color: var(--coffee-receipt-ink);
@@ -1038,7 +1038,7 @@
         line-height: 1.2;
         letter-spacing: 0.04em;
         text-align: left;
-        transition: transform 220ms cubic-bezier(0.4, 0.1, 0.2, 1);
+        pointer-events: none;
     }
 
     .coffee__receipt span {
@@ -1053,21 +1053,68 @@
         font-weight: 500;
     }
 
+    /* One strip of clear tape straddling the seam: half pressed onto the
+       plastic, half onto the receipt, so the paper reads as taped flat. */
+    .coffee__tape {
+        position: absolute;
+        z-index: 3;
+        top: 108px;
+        left: 50%;
+        width: 44px;
+        height: 11.5px;
+        transform: translateX(-50%) rotate(-0.35deg);
+        border-radius: 1px;
+        background:
+            linear-gradient(
+                100deg,
+                rgb(255 255 255 / 0) 0 22%,
+                rgb(255 255 255 / 0.42) 32%,
+                rgb(255 255 255 / 0.08) 44%,
+                rgb(255 255 255 / 0) 58% 100%
+            ),
+            linear-gradient(
+                180deg,
+                rgb(247 251 249 / 0.5) 0,
+                rgb(226 235 231 / 0.24) 18%,
+                rgb(222 231 227 / 0.18) 50%,
+                rgb(226 235 231 / 0.26) 84%,
+                rgb(244 249 246 / 0.46) 100%
+            );
+        box-shadow:
+            0 0.5px 1px rgb(44 24 16 / 0.12),
+            inset 0 1px 0 rgb(255 255 255 / 0.24),
+            inset 0 -1px 0 rgb(255 255 255 / 0.2);
+        backdrop-filter: blur(0.35px) saturate(0.98);
+        pointer-events: none;
+    }
+
+    /* The parcel: one button that owns the plastic, the receipt, and the
+       tape. Every hover, focus, press, and squeeze transform below drives
+       the whole button, so the three parts always move as a single object. */
     .coffee__bag {
-        position: relative;
+        position: absolute;
         z-index: 2;
+        top: 0;
+        left: 0;
         display: block;
+        width: 160px;
+        height: 170px;
         border: 0;
         background: none;
         padding: 0;
         cursor: pointer;
         line-height: 0;
+        transform-origin: 50% 60%;
         transition: transform 180ms ease;
     }
 
     .coffee__bag:hover,
     .coffee__bag:focus-visible {
         transform: translateY(-2px);
+    }
+
+    .coffee__bag:active {
+        transform: translateY(-1px) scale(0.99);
     }
 
     .coffee__bag:focus-visible {
@@ -1077,6 +1124,10 @@
     }
 
     .coffee__svg {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
         display: block;
         width: 160px;
         height: 122px;
@@ -1334,21 +1385,17 @@
 
     /* ---- Click state and caption -------------------------------------- */
 
-    .coffee.is-squeezed .coffee__svg {
+    .coffee.is-squeezed .coffee__bag {
         animation: coffee-squeeze 220ms ease;
-    }
-
-    .coffee.is-squeezed .coffee__receipt {
-        transform: translate(-50%, -3px) rotate(-4deg);
     }
 
     @keyframes coffee-squeeze {
         0%,
         100% {
-            transform: scale(1);
+            scale: 1;
         }
         45% {
-            transform: scale(0.97);
+            scale: 0.97;
         }
     }
 
@@ -1356,6 +1403,7 @@
         font-family: var(--font-mono);
         font-size: 0.66rem;
         color: var(--color-rust-deep);
+        margin-top: 0.3rem;
         opacity: 0;
         transform: translateY(-3px);
         transition: opacity 180ms ease, transform 180ms ease;
@@ -1371,13 +1419,13 @@
         .coffee__straw,
         .coffee__bead,
         .coffee__ice,
-        .coffee__receipt,
         .coffee__joke {
             transition: none;
         }
 
         .coffee__bag:hover,
-        .coffee__bag:focus-visible {
+        .coffee__bag:focus-visible,
+        .coffee__bag:active {
             transform: none;
         }
 
@@ -1391,16 +1439,12 @@
             transform: none;
         }
 
-        .coffee.is-squeezed .coffee__svg {
+        .coffee.is-squeezed .coffee__bag {
             animation: none;
         }
 
         .coffee.is-squeezed .coffee__ice {
             transform: none;
-        }
-
-        .coffee.is-squeezed .coffee__receipt {
-            transform: translateX(-50%) rotate(-3deg);
         }
     }
 
