@@ -129,6 +129,18 @@
                 </span>
             </a>
 
+            <button
+                type="button"
+                class="site-nav__toggle"
+                aria-expanded="false"
+                aria-controls="site-nav-mobile"
+                aria-label="Menu"
+            >
+                <span class="site-nav__toggle-line" aria-hidden="true"></span>
+                <span class="site-nav__toggle-line" aria-hidden="true"></span>
+                <span class="site-nav__toggle-line" aria-hidden="true"></span>
+            </button>
+
             <nav class="site-nav" aria-label="Sections">
                 <a href="#about"><span class="site-nav__index">01</span><span class="site-nav__label">Bio</span></a>
                 <a href="#projects"><span class="site-nav__index">02</span><span class="site-nav__label">Projects</span></a>
@@ -139,7 +151,7 @@
             <span class="site-nav__marker" aria-hidden="true"></span>
         </div>
 
-        <nav class="site-nav-mobile" aria-label="Quick links">
+        <nav class="site-nav-mobile" id="site-nav-mobile" aria-label="Quick links">
             <a href="#about"><span class="site-nav-mobile__index">01</span> Bio</a>
             <a href="#projects"><span class="site-nav-mobile__index">02</span> Projects</a>
             <a href="#skills"><span class="site-nav-mobile__index">03</span> Skills</a>

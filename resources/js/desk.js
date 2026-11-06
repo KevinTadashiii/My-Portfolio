@@ -116,6 +116,48 @@ function initProjectPagination() {
     render();
 }
 
+/* Mobile shelf menu: Raycast-style collapsed bar + expanding row list */
+function initMobileNav() {
+    const header = document.querySelector('.site-header');
+    const toggle = document.querySelector('.site-nav__toggle');
+    const panel = document.getElementById('site-nav-mobile');
+
+    if (!header || !toggle || !panel) {
+        return;
+    }
+
+    const desktop = window.matchMedia('(min-width: 880px)');
+
+    function setOpen(open) {
+        header.classList.toggle('is-menu-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+    }
+
+    function isOpen() {
+        return header.classList.contains('is-menu-open');
+    }
+
+    toggle.addEventListener('click', () => setOpen(!isOpen()));
+
+    panel.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && isOpen() && !desktop.matches) {
+            setOpen(false);
+            toggle.focus();
+        }
+    });
+
+    desktop.addEventListener('change', (event) => {
+        if (event.matches) {
+            setOpen(false);
+        }
+    });
+}
+
 /* Navbar sliding marker */
 function initNavMarker() {
     const nav = document.querySelector('.site-nav');
@@ -160,6 +202,7 @@ function initNavMarker() {
 }
 
 export function initDesk() {
+    initMobileNav();
     initProjectPagination();
     initNavMarker();
     initBlendCursor();

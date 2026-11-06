@@ -210,7 +210,7 @@
         width: 100%;
         max-width: 1180px;
         /* Clears the 12px rail + hanging brackets */
-        padding: 1.1rem 1.75rem 0.7rem;
+        padding: 1.1rem 1.25rem 0.7rem;
     }
 
     .brand {
@@ -261,6 +261,63 @@
         font-size: 0.66rem;
         letter-spacing: 0.04em;
         color: var(--color-ink-2);
+    }
+
+    /* Raycast mobile: single-row bar — brand left, hamburger right.
+       Toggle is a small brass plate; desktop hides it and shows inline links. */
+    .site-nav__toggle {
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        margin-inline-start: auto;
+        border: 1px solid rgb(44 24 16 / 0.28);
+        border-radius: 10px;
+        background: linear-gradient(180deg, #e4ce9f, #c9a869);
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.55),
+            inset 0 -1px 0 rgb(44 24 16 / 0.18);
+        cursor: pointer;
+    }
+
+    .site-nav__toggle-line {
+        position: absolute;
+        left: 50%;
+        width: 18px;
+        height: 2px;
+        border-radius: 1px;
+        background: var(--color-ink);
+        transform: translate(-50%, -50%);
+        transition: transform 250ms ease, opacity 200ms ease;
+    }
+
+    .site-nav__toggle-line:nth-child(1) {
+        top: 30%;
+    }
+
+    .site-nav__toggle-line:nth-child(2) {
+        top: 50%;
+    }
+
+    .site-nav__toggle-line:nth-child(3) {
+        top: 70%;
+    }
+
+    /* Open state: hamburger morphs to an X, like Raycast */
+    .site-header.is-menu-open .site-nav__toggle-line:nth-child(1) {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .site-header.is-menu-open .site-nav__toggle-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .site-header.is-menu-open .site-nav__toggle-line:nth-child(3) {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
     }
 
     .site-nav {
@@ -325,59 +382,82 @@
         pointer-events: none;
     }
 
-    /* Direction 5 mobile: wrapping inline list, no scroll strip, no chips */
+    /* Raycast mobile expanded: one vertical list of full-width rows inside
+       the same shelf card — no chips, tall tap targets, left-aligned. */
     .site-nav-mobile {
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
+        flex-direction: column;
+        gap: 0;
         margin-inline: auto;
         width: 100%;
         max-width: 1180px;
-        padding: 0 1.75rem 1rem;
+        padding: 0 1.25rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 320ms cubic-bezier(0.4, 0.1, 0.2, 1), opacity 200ms ease, visibility 0s linear 320ms;
+    }
+
+    .site-header.is-menu-open .site-nav-mobile {
+        max-height: 24rem;
+        opacity: 1;
+        visibility: visible;
+        padding-bottom: 1rem;
+        transition: max-height 320ms cubic-bezier(0.4, 0.1, 0.2, 1), opacity 200ms ease;
     }
 
     .site-nav-mobile a,
     .site-nav-mobile button {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 0.25rem;
-        border: 1px solid rgb(44 24 16 / 0.14);
-        border-radius: 3px;
-        background-color: var(--color-paper);
-        padding: 0.3rem 0.65rem;
-        font-size: 0.78rem;
+        gap: 0.5rem;
+        width: 100%;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        padding: 0.75rem 0.5rem;
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
         color: var(--color-ink-2);
         text-decoration: none;
+        text-align: left;
         white-space: nowrap;
         cursor: pointer;
-        transition: border-color 150ms ease, color 150ms ease;
+        transition: background-color 150ms ease, color 150ms ease;
     }
 
     .site-nav-mobile a:hover,
-    .site-nav-mobile button:hover {
-        border-color: var(--color-rust-deep);
+    .site-nav-mobile button:hover,
+    .site-nav-mobile a:focus-visible {
+        background: rgb(44 24 16 / 0.05);
         color: var(--color-ink);
     }
 
     .site-nav-mobile__index {
         font-family: var(--font-mono);
-        font-size: 0.58rem;
+        font-size: 0.68rem;
         letter-spacing: 0.04em;
         color: var(--color-rust);
     }
 
-    /* Hide small indices below 420px so the row stays to one line */
-    @media (max-width: 419px) {
-        .site-nav-mobile__index {
-            display: none;
+    @media (prefers-reduced-motion: reduce) {
+        .site-nav__toggle-line,
+        .site-nav-mobile {
+            transition: none;
         }
     }
 
 
-    @media (min-width: 768px) {
+    /* Raycast mobile/desktop split is 880px — same here for the header */
+    @media (min-width: 880px) {
         .site-header__bar {
             padding: 1.15rem 1.5rem 0.9rem;
+        }
+
+        .site-nav__toggle {
+            display: none;
         }
 
         .site-nav {
@@ -386,6 +466,20 @@
 
         .site-nav-mobile {
             display: none;
+        }
+    }
+
+    /* Tighten the long brand so it sits on one line beside the toggle */
+    @media (max-width: 879px) {
+        .brand__name {
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+    }
+
+    @media (max-width: 419px) {
+        .brand__name {
+            font-size: 0.92rem;
         }
     }
 
