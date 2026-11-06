@@ -1,4 +1,5 @@
 import { DeskTerminal } from './terminal.js';
+import { initBlendCursor } from './blend-cursor.js';
 
 /**
  * Desk behaviour: the terminal lives in exactly one place at a time.
@@ -161,6 +162,7 @@ function initNavMarker() {
 export function initDesk() {
     initProjectPagination();
     initNavMarker();
+    initBlendCursor();
 
     const desk = document.querySelector('[data-desk]');
     const terminalRoot = document.querySelector('[data-terminal]');

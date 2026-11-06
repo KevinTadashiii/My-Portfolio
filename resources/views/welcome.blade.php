@@ -16,7 +16,7 @@
     <section class="desk-section" id="top" aria-labelledby="desk-heading">
         <div class="desk-intro">
             <p class="eyebrow">{{ $profile['handle'] }} &mdash; {{ $profile['location'] }}</p>
-            <h1 class="display-title" id="desk-heading">
+            <h1 class="display-title" id="desk-heading" data-cursor="blend">
                 A student desk, wired to a <em>terminal</em>.
             </h1>
             <p class="lede">{{ $profile['tagline'] }}</p>

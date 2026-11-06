@@ -379,6 +379,33 @@
         color: var(--color-rust-deep);
     }
 
+    /* Blend cursor: a difference-blend circle trails the pointer over the
+       title so the ink inverts as it passes (after DeepSeek's hero). The
+       canvas is fixed once JS creates it; the base styles below only apply
+       to that canvas. Touch devices and reduced motion never create it. */
+    .blend-cursor-canvas {
+        position: fixed;
+        inset: 0;
+        z-index: 90;
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        mix-blend-mode: difference;
+    }
+
+    @media (hover: none), (pointer: coarse) {
+        .blend-cursor-canvas {
+            display: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .blend-cursor-canvas {
+            display: none;
+        }
+    }
+
     .lede {
         max-width: 46ch;
         font-size: 0.98rem;
