@@ -29,6 +29,30 @@ return [
         'name' => 'Portfolio',
     ],
 
+    'seo' => [
+        'site_name' => 'Kevin Kanigara Portfolio',
+        'title' => 'Kevin Kanigara — Software Engineering Student Bandung | Developer Portfolio',
+        'description' => 'Muhammad Akbar Kevin Kanigara — Software Engineering student at SMKN 2 Bandung building with C++, Python, Laravel, TypeScript, Docker & AI. Always learning by building.',
+        'keywords' => [
+            'Kevin Kanigara',
+            'Software Engineering Student Bandung',
+            'SMKN 2 Bandung RPL',
+            'Full Stack Developer Indonesia',
+            'C++ Python Laravel TypeScript Developer',
+            'Laravel Developer',
+            'Portfolio Developer Bandung',
+        ],
+        'image' => 'og-image.png',
+        'image_alt' => 'Kevin Kanigara portfolio — Software Engineering Student in Bandung',
+        'type' => 'website',
+        'locale' => 'en_US',
+        'twitter_site' => '@KevinTadashiii',
+        'same_as' => [
+            'https://github.com/KevinTadashiii',
+            'https://www.instagram.com/bayabaytjn_',
+        ],
+    ],
+
     'about' => [
         'paragraphs' => [
             'It started in 6th grade, I wanted to make a game that would get everyone\'s attention. Turned out, the skill I needed most wasn\'t art or design, but programming. That was the entry point.',

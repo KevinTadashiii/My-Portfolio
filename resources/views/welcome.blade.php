@@ -17,9 +17,11 @@
         <div class="desk-intro">
             <p class="eyebrow">{{ $profile['handle'] }} &mdash; {{ $profile['location'] }}</p>
             <h1 class="display-title" id="desk-heading" data-cursor="blend">
-                A student desk, wired to a <em>terminal</em>.
+                <span class="sr-only">{{ $profile['name'] }} — {{ $profile['role'] }} in {{ $profile['location'] }}: </span>A student desk, wired to a <em>terminal</em>.
             </h1>
             <p class="lede">{{ $profile['tagline'] }}</p>
+            {{-- Keyword-rich context for crawlers (visually hidden, screen-reader + SEO) --}}
+            <p class="sr-only">Software Engineering student at SMKN 2 Bandung (RPL), specializing in C, C++, Python, JavaScript, TypeScript, Laravel, Linux, Docker, SQL, and AI/ML. Building with Laravel, PHP, and modern tooling. Always learning by building.</p>
         </div>
 
         <div class="desk" data-desk data-terminal-state="collapsed">
@@ -70,7 +72,7 @@
         <section class="section" id="about" aria-labelledby="about-heading">
             <div class="section__head">
                 <p class="eyebrow">01 &mdash; about</p>
-                <h2 class="section__title" id="about-heading">Who is typing this?</h2>
+                <h2 class="section__title" id="about-heading">Who is typing this?<span class="sr-only"> — About Kevin Kanigara, Software Engineering Student Bandung</span></h2>
             </div>
 
             <div class="paper section__body">
@@ -88,7 +90,7 @@
         <section class="section" id="projects" aria-labelledby="projects-heading">
             <div class="section__head">
                 <p class="eyebrow">02 &mdash; projects</p>
-                <h2 class="section__title" id="projects-heading">The project folder</h2>
+                <h2 class="section__title" id="projects-heading">The project folder<span class="sr-only"> — Software Projects by Kevin Kanigara: Laravel, TypeScript, Python, Rust</span></h2>
             </div>
 
             <div class="paper section__body">
@@ -112,6 +114,24 @@
                         @endforeach
                     </div>
 
+                    {{-- Crawlable project links (buttons are JS-driven; these anchor tags carry GitHub URLs for SEO + no-JS) --}}
+                    <ul class="sr-only">
+                        @foreach ($projects as $slug => $project)
+                            <li>
+                                <a href="{{ $project['url'] }}" rel="noopener noreferrer">{{ $project['title'] }} — {{ $project['summary'] }} ({{ implode(', ', $project['stack']) }}) on GitHub</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <noscript>
+                        <ul class="project-grid" style="margin-top:1rem">
+                            @foreach ($projects as $slug => $project)
+                                <li>
+                                    <a href="{{ $project['url'] }}" rel="noopener noreferrer" target="_blank" style="color:var(--color-rust-deep);text-decoration:underline;text-underline-offset:3px">{{ $project['title'] }} &rarr;</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </noscript>
+
                     <nav class="project-pagination" data-project-pagination aria-label="Project pages" hidden></nav>
                 @else
                     <div class="empty-state">
@@ -134,7 +154,7 @@
         <section class="section" id="skills" aria-labelledby="skills-heading">
             <div class="section__head">
                 <p class="eyebrow">03 &mdash; skills</p>
-                <h2 class="section__title" id="skills-heading">The tool rack</h2>
+                <h2 class="section__title" id="skills-heading">The tool rack<span class="sr-only"> — Developer Skills: C++, Python, Laravel, TypeScript, Docker, Linux</span></h2>
             </div>
 
             <div class="paper section__body">
@@ -164,7 +184,7 @@
         <section class="section" id="journey" aria-labelledby="journey-heading">
             <div class="section__head">
                 <p class="eyebrow">04 &mdash; journey</p>
-                <h2 class="section__title" id="journey-heading">How I got here</h2>
+                <h2 class="section__title" id="journey-heading">How I got here<span class="sr-only"> — Journey: From Game Dev to Software Engineering at SMKN 2 Bandung</span></h2>
             </div>
 
             <div class="paper section__body">
@@ -186,14 +206,14 @@
         <section class="section" id="contact" aria-labelledby="contact-heading">
             <div class="section__head">
                 <p class="eyebrow">05 &mdash; contact</p>
-                <h2 class="section__title" id="contact-heading">Send a postcard</h2>
+                <h2 class="section__title" id="contact-heading">Send a postcard<span class="sr-only"> — Contact Kevin Kanigara</span></h2>
             </div>
 
             <div class="paper section__body">
                 <ul class="contact-list">
                     @foreach ($contact['links'] as $link)
                         <li>
-                            <a class="contact-link" href="{{ $link['url'] }}" rel="noopener noreferrer" target="_blank">
+                            <a class="contact-link" href="{{ $link['url'] }}" rel="@if(in_array($link['label'], ['GitHub', 'Instagram'])) me @endif noopener noreferrer" @if(!str_starts_with($link['url'], 'mailto:')) target="_blank" @endif>
                                 <span class="contact-link__label">{{ $link['label'] }}</span>
                                 <span class="contact-link__value">{{ $link['value'] }}</span>
                             </a>
