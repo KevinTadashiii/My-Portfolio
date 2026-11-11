@@ -2779,6 +2779,59 @@
         color: var(--color-ink-2);
     }
 
+    /* Closing quote: the last line written on the desk */
+    .closing-quote {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 40rem;
+        padding: 0.5rem 1rem 2.5rem;
+        text-align: center;
+    }
+
+    .closing-quote::before {
+        content: "";
+        display: block;
+        width: 2.25rem;
+        height: 2px;
+        margin: 0 auto 1.75rem;
+        background-color: var(--color-rust);
+    }
+
+    .closing-quote__text {
+        margin: 0;
+    }
+
+    .closing-quote__text p {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+        font-style: italic;
+        line-height: 1.55;
+        color: var(--color-ink);
+        text-wrap: balance;
+    }
+
+    .closing-quote__source {
+        margin-top: 1.15rem;
+        font-family: var(--font-hand);
+        font-size: 1.3rem;
+        line-height: 1.2;
+        color: var(--color-ink-2);
+    }
+
+    .closing-quote__work {
+        font-family: var(--font-display);
+        font-size: 0.95rem;
+        font-style: italic;
+        letter-spacing: 0.01em;
+    }
+
+    @media (min-width: 768px) {
+        .closing-quote {
+            padding: 1rem 1.5rem 3.5rem;
+        }
+    }
+
     /* Empty state */
     .empty-state {
         display: flex;

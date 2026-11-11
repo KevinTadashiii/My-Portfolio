@@ -238,6 +238,12 @@ return [
         ],
     ],
 
+    'closing_quote' => [
+        'text' => 'All things work together for good to them that love God.',
+        'author' => 'Ed Warren',
+        'source' => 'In a Dark Place',
+    ],
+
     'terminal' => [
         'prompt' => 'kevin@desk:~$',
         'suggestions' => ['help', 'whoami', 'about', 'projects', 'skills', 'journey', 'contact', 'clear', 'sudo'],

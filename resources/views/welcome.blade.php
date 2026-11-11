@@ -8,6 +8,7 @@
         $skills = config('portfolio.skills');
         $journey = config('portfolio.journey');
         $contact = config('portfolio.contact');
+        $closingQuote = config('portfolio.closing_quote');
     @endphp
 
     {{-- ---------------------------------------------------------------- --}}
@@ -227,6 +228,18 @@
                 </p>
             </div>
         </section>
+
+        {{-- ---------------------------------------------------------------- --}}
+        {{-- Closing quote                                                      --}}
+        {{-- ---------------------------------------------------------------- --}}
+        <figure class="closing-quote reveal">
+            <blockquote class="closing-quote__text">
+                <p>&ldquo;{{ $closingQuote['text'] }}&rdquo;</p>
+            </blockquote>
+            <figcaption class="closing-quote__source">
+                &mdash; {{ $closingQuote['author'] }}, <cite class="closing-quote__work">{{ $closingQuote['source'] }}</cite>
+            </figcaption>
+        </figure>
     </div>
 
     {{-- ---------------------------------------------------------------- --}}
