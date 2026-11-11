@@ -932,9 +932,12 @@
         background: rgb(255 255 255 / 0.28);
     }
 
+    /* Out of flow so the screen's 16:9 ratio owns the height. In flow, the
+       terminal's content stretched the display and the laptop grew with every
+       line of output instead of the screen scrolling. */
     .laptop__display {
-        position: relative;
-        height: 100%;
+        position: absolute;
+        inset: 0.6rem;
         overflow: hidden;
         border-radius: 8px;
         background-color: var(--color-term);
