@@ -3,7 +3,14 @@
 @endphp
 
 <a class="postcard" href="#contact">
-    <span class="postcard__stamp" aria-hidden="true">kk</span>
+    <img
+        class="postcard__stamp"
+        src="{{ asset('images/postcard-stamp.jpg') }}"
+        alt=""
+        width="46"
+        height="54"
+        decoding="async"
+    >
     <span>
         <span class="postcard__eyebrow">postcard</span>
         <span class="postcard__title">say hello</span>

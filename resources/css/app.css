@@ -2223,17 +2223,15 @@
     }
 
     .postcard__stamp {
-        display: grid;
-        place-items: center;
+        display: block;
         width: 46px;
         height: 54px;
         flex: 0 0 auto;
         border: 2px dashed var(--color-rust);
         border-radius: 4px;
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        letter-spacing: 0.06em;
-        color: var(--color-rust-deep);
+        background: var(--color-paper);
+        object-fit: cover;
+        box-shadow: 0 2px 6px -3px rgb(44 24 16 / 0.45);
     }
 
     .postcard__eyebrow {
