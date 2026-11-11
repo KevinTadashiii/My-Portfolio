@@ -69,7 +69,7 @@
     {{-- About                                                              --}}
     {{-- ---------------------------------------------------------------- --}}
     <div class="sections">
-        <section class="section" id="about" aria-labelledby="about-heading">
+        <section class="section reveal" id="about" aria-labelledby="about-heading">
             <div class="section__head">
                 <p class="eyebrow">01 &mdash; about</p>
                 <h2 class="section__title" id="about-heading">Who is typing this?<span class="sr-only"> — About Kevin Kanigara, Software Engineering Student Bandung</span></h2>
@@ -87,7 +87,7 @@
         {{-- ---------------------------------------------------------------- --}}
         {{-- Projects                                                           --}}
         {{-- ---------------------------------------------------------------- --}}
-        <section class="section" id="projects" aria-labelledby="projects-heading">
+        <section class="section reveal" id="projects" aria-labelledby="projects-heading">
             <div class="section__head">
                 <p class="eyebrow">02 &mdash; projects</p>
                 <h2 class="section__title" id="projects-heading">The project folder<span class="sr-only"> — Software Projects by Kevin Kanigara: Laravel, TypeScript, Python, Rust</span></h2>
@@ -151,7 +151,7 @@
         {{-- ---------------------------------------------------------------- --}}
         {{-- Skills                                                             --}}
         {{-- ---------------------------------------------------------------- --}}
-        <section class="section" id="skills" aria-labelledby="skills-heading">
+        <section class="section reveal" id="skills" aria-labelledby="skills-heading">
             <div class="section__head">
                 <p class="eyebrow">03 &mdash; skills</p>
                 <h2 class="section__title" id="skills-heading">The tool rack<span class="sr-only"> — Developer Skills: C++, Python, Laravel, TypeScript, Docker, Linux</span></h2>
@@ -181,7 +181,7 @@
         {{-- ---------------------------------------------------------------- --}}
         {{-- Journey                                                            --}}
         {{-- ---------------------------------------------------------------- --}}
-        <section class="section" id="journey" aria-labelledby="journey-heading">
+        <section class="section reveal" id="journey" aria-labelledby="journey-heading">
             <div class="section__head">
                 <p class="eyebrow">04 &mdash; journey</p>
                 <h2 class="section__title" id="journey-heading">How I got here<span class="sr-only"> — Journey: From Game Dev to Software Engineering at SMKN 2 Bandung</span></h2>
@@ -203,7 +203,7 @@
         {{-- ---------------------------------------------------------------- --}}
         {{-- Contact                                                            --}}
         {{-- ---------------------------------------------------------------- --}}
-        <section class="section" id="contact" aria-labelledby="contact-heading">
+        <section class="section reveal" id="contact" aria-labelledby="contact-heading">
             <div class="section__head">
                 <p class="eyebrow">05 &mdash; contact</p>
                 <h2 class="section__title" id="contact-heading">Send a postcard<span class="sr-only"> — Contact Kevin Kanigara</span></h2>
