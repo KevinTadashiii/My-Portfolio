@@ -8,7 +8,7 @@
         src="{{ asset('images/postcard-stamp.jpg') }}"
         alt=""
         width="36"
-        height="64"
+        height="56"
         decoding="async"
     >
     <span>

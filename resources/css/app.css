@@ -2225,7 +2225,7 @@
     .postcard__stamp {
         display: block;
         width: 36px;
-        height: 64px;
+        height: 56px;
         flex: 0 0 auto;
         border: 2px dashed var(--color-rust);
         border-radius: 4px;
